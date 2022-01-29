@@ -1,0 +1,653 @@
+#Hotel Management System Project
+import random
+import datetime
+
+# List Declaration
+na = []
+a = []
+p = []
+rc=[]
+cost = []
+room = []
+rno = []
+cid = []
+cin = []
+cout = []
+pno = []
+s = []
+
+i = 0
+
+# Home Function
+def Home():
+
+        print("\t\t\t WELCOME TO ***THE CROWN MARK***\n")
+        print("\t Greetings Sir/Madam,\n \t What would you like to do:\n")      
+        print("\t 1 Room Booking\n")
+        print("\t 2 Room Description\n")
+        print("\t 3 Restaurant (Menu Card)\n")
+        print("\t 4 Payment Method\n")
+        print("\t 5 Customer Record Info\n")
+        print("\t 0 Exit\n")
+
+        num=int(input("===>"))
+
+	
+        if num == 1:
+                 print(" ")
+                 Room_Booking()
+	
+        elif num == 2:
+                 print(" ")
+                 Room_Description()
+	
+        elif num == 3:
+                 print(" ")
+                 Restaurant()
+	
+        elif num == 4:
+                 print(" ")
+                 Payment_Method()
+	 
+	
+        else:
+                 exit()
+
+#Room Booking Function
+def Room_Booking():
+
+        print("\t Please enter your personal info\n")
+
+        while 1:
+         name=str(input("Name: "))
+         add=str(input("Address: "))
+         ph=int(input("Phone No.: "))
+         
+
+         #If any field is empty
+         
+         if name!="" and add!="" and ph!="":
+                na.append(name)
+                a.append(add)
+                p.append(ph)
+                break
+         elif name == "" and add == "" and ph == "":
+                 print("\t Name, Address and Phone No.are required field!")
+         elif name == "" and add == "":
+                 print("\t Name and Address are required field!")
+         elif name == "" and ph == "":
+                 print("\t Name and Phone No. are required field!")
+         elif ph == "" and add == "":
+                 print("\t Phone No. and Address are required field!")
+         elif name == "":
+                 print("\t Name is reqired field!")
+         elif add == "":
+                 print("\t Address is reqired field!")
+         elif ph == "":
+                 print("\t Phone No. is reqired field!")
+        
+        date = input("Check In(YYYY-MM-DD): ")
+        year, month, day = map(int, date.split('-'))
+        date1 = datetime.date(year, month, day)
+
+        date = input("Check Out(YYYY-MM-DD): ")
+        year, month, day = map(int, date.split('-'))
+        date2 = datetime.date(year, month, day)
+
+        while date1 >= date2:
+                print("\t\t Sorry...!\n You have to choose check out date after check in date")
+                date = input("Check In(YYYY-MM-DD): ")
+                year, month, day = map(int, date.split('-'))
+                date1 = datetime.date(year, month, day)
+
+                date = input("Check Out(YYYY-MM-DD): ")
+                year, month, day = map(int, date.split('-'))
+                date2 = datetime.date(year, month, day)
+            
+                cin.append(date)
+                cout.append(date)
+                break  
+
+        email_id=input("E-mail ID: ")
+
+        ppl=int(input("No. of people(Max. 3 person allowed): "))
+        
+        while ppl > 0:
+                if ppl == 1:
+                        print("Successfully Fulfilled")
+                        break
+
+                elif ppl == 2:
+                
+                        name2=input("Name2: ")
+                        ph2=input("Phone No.2: ")
+                        if name2!="":
+                                na.append(name2)
+                                break
+                        else:
+                                print("\t Name2 is rquired!")
+                elif ppl == 3:
+                
+                        name3=input("Name2: ")
+                        ph3=input("Phone No.2: ")
+                        if name3!="":
+                                na.append(name3)
+                                break
+                        else:
+                                print("\t Name2 is rquired!")
+                        name4=input("Name3: ")
+                        ph4=input("Phone No.3: ")
+                        if name4!="":
+                                na.append(name4)
+                                break
+        
+                        else:
+                                print("\t Name3 is rquired!")
+                                
+                else:
+                    print("\t\tMore than 3 people not allowed\n \t\t Book more rooms..!\n\n ")
+                    
+
+        
+
+
+
+        print("------SELECT ROOM TYPE------\n")
+        print(" 1. Standard\n")
+        print(" 2. Deluxe\n")
+        print(" 3. Connecting Rooms\n")
+        print(" 4. Suite\n")
+        print(("----Press 0 for Room Costing----\n"))
+         
+        ch=int(input("===>"))
+
+        if ch == 0:
+                print(" 1. Standard - Rs. 3000\n")
+                print(" 2. Deluxe - Rs. 5000\n")
+                print(" 3. Connecting Rooms - Rs. 9000\n")
+                print(" 4. Suite - Rs. 11000")
+                print("----Press 0 for Room Info----\n")
+
+                ch=int(input("===>"))
+
+                if ch == 0:
+                    print("------HOTEL ROOMS INFO------")
+                    print("")
+                    print("1. STANDARD")
+                    print("---------------------------------------------------------------------")
+                    print("Standard room includes 1 queen sized double bed, LED TV,")
+                    print("Small Meeting Table, Comfy Sofa Set, Attached Bathroom With Shower Set.\n")
+            
+                    print("2. DELUXE")
+                    print("---------------------------------------------------------------------")
+                    print("Deluxe room includes 1 king sized double bed, LED TV with bass system,")
+                    print("High end Meeting Table, Comfy Sofa Twins, Attached Jacuzzi, Iron.\n")
+     
+                    print("3. CONNECTING ROOMS")
+                    print("---------------------------------------------------------------------")
+                    print("Connecting Rooms includes 2 spaces with main door attached and 2 entances,")
+                    print("Telephone, a Triple-Door Cupboard, 1 Coffee table with 2 sofa, 1")
+                    print("1 king sized bed, 1 queen sized bed, 2 LED TV with bass system and an")
+                    print("attached washroom with jacuzzi, 1 mini fridge,Iron.\n")
+                    
+                    print("4.SUITE")
+                    print("---------------------------------------------------------------------")
+                    print("Suite includes luxurious bed, Big massage sofa sets, 52 inch LED TV,")
+                    print("a fridge, a Triple-Door Cupboard, Sea faced balcony, locker, ")
+                    print("complementary soft drinks, Balcony with an Accent table with 2 Chair and an")
+                    print("attached washroom with bath tub + Split AC.\n\n")
+                    print()
+
+                    ch=int(input("===>"))
+                    if ch==1:
+                      room.append("STANDARD\n")
+                      print("Room Type: STANDARD\n") 
+                      cost.append(3000)
+                      print("Cost: 3000\n")
+                      rn = random.randrange(10)+100
+                      print("ROOM NO.: ",rn,"\n")
+                      cid = random.randrange(10)
+                      print("CUSTOMER ID: ",cid,"\n")
+
+                    elif ch==2:
+                      room.append("DELUXE")
+                      print("Room Type: DELUXE\n")
+                      cost.append(5000)
+                      print("Cost: 5000\n")
+                      rn = random.randrange(10)+200
+                      print("ROOM NO.: ",rn,"\n")
+                      cid = random.randrange(10)+10
+                      print("CUSTOMER ID: ",cid,"\n")
+
+            
+                    elif ch==3:
+                        room.append("CONNECTING ROOMS")
+                        print("Room Type: CONNECTING ROOM\n")
+                        cost.append(9000)
+                        print("Cost: 9000\n")
+                        rn = random.randrange(5)+300
+                        print("ROOM NO.: ",rn,"\n")
+                        cid = random.randrange(5)+20
+                        print("CUSTOMER ID: ",cid,"\n")
+
+            
+                    elif ch==4:
+                      room.append("SUITE")
+                      print("Room Type: SUITE\n")
+                      cost.append(11000)
+                      print("Cost: 11000\n")
+                      rn = random.randrange(8)+400
+                      print("ROOM NO.: ",rn,"\n")
+                      cid = random.randrange(8)+25
+                      print("CUSTOMER ID: ",cid,"\n")
+
+                    else:
+                      print(" You have pressed wrong button..!")
+
+                    n=int(input("----Press 0 for Main Menu----\n ===>"))
+                    if n == 0:
+                        Home()
+                    else:
+                        exit()
+
+
+
+                                                            
+                elif ch == 1:
+                      room.append("STANDARD\n")
+                      print("Room Type: STANDARD\n") 
+                      cost.append(3000)
+                      print("Cost: 3000\n")
+                      rn = random.randrange(10)+100
+                      print("ROOM NO.: ",rn,"\n")
+                      cid = random.randrange(10)
+                      print("CUSTOMER ID: ",cid,"\n")
+
+                elif ch==2:
+                      room.append("DELUXE")
+                      print("Room Type: DELUXE\n")
+                      cost.append(5000)
+                      print("Cost: 5000\n")
+                      rn = random.randrange(10)+200
+                      print("ROOM NO.: ",rn,"\n")
+                      cid = random.randrange(10)+10
+                      print("CUSTOMER ID: ",cid,"\n")
+
+            
+                elif ch==3:
+                    room.append("CONNECTING ROOMS")
+                    print("Room Type: CONNECTING ROOM\n")
+                    cost.append(9000)
+                    print("Cost: 9000\n")
+                    rn = random.randrange(5)+300
+                    print("ROOM NO.: ",rn,"\n")
+                    cid = random.randrange(5)+20
+                    print("CUSTOMER ID: ",cid,"\n")
+
+            
+                elif ch==4:
+                      room.append("SUITE")
+                      print("Room Type: SUITE\n")
+                      cost.append(11000)
+                      print("Cost: 11000\n")
+                      rn = random.randrange(8)+400
+                      print("ROOM NO.: ",rn,"\n")
+                      cid = random.randrange(8)+25
+                      print("CUSTOMER ID: ",cid,"\n")
+
+                else:
+                      print(" You have pressed wrong button..!")
+
+                n=int(input("----Press 0 for Main Menu----\n ===>"))
+                if n == 0:
+                        Home()
+                else:
+                        exit()
+
+  
+        
+        elif ch == 1:
+            room.append("STANDARD\n")
+            print("Room Type: STANDARD\n") 
+            cost.append(3000)
+            print("Cost: 3000\n")
+            rn = random.randrange(10)+100
+            print("ROOM NO.: ",rn,"\n")
+            cid = random.randrange(10)
+            print("CUSTOMER ID: ",cid,"\n")
+
+        elif ch==2:
+            room.append("DELUXE")
+            print("Room Type: DELUXE\n")
+            cost.append(5000)
+            print("Cost: 5000\n")
+            rn = random.randrange(10)+200
+            print("ROOM NO.: ",rn,"\n")
+            cid = random.randrange(10)+10
+            print("CUSTOMER ID: ",cid,"\n")
+
+            
+        elif ch==3:
+            room.append("CONNECTING ROOMS")
+            print("Room Type: CONNECTING ROOM\n")
+            cost.append(9000)
+            print("Cost: 9000\n")
+            rn = random.randrange(5)+300
+            print("ROOM NO.: ",rn,"\n")
+            cid = random.randrange(5)+20
+            print("CUSTOMER ID: ",cid,"\n")
+
+            
+        elif ch==4:
+            room.append("SUITE")
+            print("Room Type: SUITE\n")
+            cost.append(11000)
+            print("Cost: 11000\n")
+            rn = random.randrange(8)+400
+            print("ROOM NO.: ",rn,"\n")
+            cid = random.randrange(8)+25
+            print("CUSTOMER ID: ",cid,"\n")
+
+        else:
+            print(" You have pressed wrong button..!")
+
+        n=int(input("----Press 0 for Main Menu----\n ===>"))
+        if n == 0:
+            Home()
+        else:
+            exit()
+        global i
+        if ph not in pno:
+            pno.append(ph)
+        elif ph in pno:
+            for n in range(0,i):
+                if ph in pno[n]:
+                    if s[n]==1:
+                        pno.append(ph)
+        elif ph in pno:
+            for n in range(0,i):
+                if ph in pno[n]:
+                    if s[n]==0:
+                        print("\tPhone no. already exists and payment yet not done..!!")
+
+#Room Description
+def Room_Description():
+    print("\t\t\t---****THE CROWN MARK****---\n\n")
+    print("1. STANDARD -Cost: 3000")
+    print("---------------------------------------------------------------------")
+    print("Standard room includes 1 queen sized double bed, LED TV,")
+    print("Small Meeting Table, Comfy Sofa Set, Attached Bathroom With Shower Set.\n")
+            
+    print("2. DELUXE -Cost: 5000")
+    print("---------------------------------------------------------------------")
+    print("Deluxe room includes 1 king sized double bed, LED TV with bass system,")
+    print("High end Meeting Table, Comfy Sofa Twins, Attached Jacuzzi, Iron.\n")
+     
+    print("3. CONNECTING ROOMS -Cost: 9000")
+    print("---------------------------------------------------------------------")
+    print("Connecting Rooms includes 2 spaces with main door attached and 2 entrance,")
+    print("Telephone, a Triple-Door Cupboard, 1 Coffee table with 2 sofa, 1")
+    print("1 king sized bed, 1 queen sized bed, 2 LED TV with bass system and an")
+    print("attached washroom with jacuzzi, 1 mini fridge,Iron.\n")
+                    
+    print("4.SUITE -Cost: 11000")
+    print("---------------------------------------------------------------------")
+    print("Suite includes luxurious bed, Big massage sofa sets, 52 inch LED TV,")
+    print("a fridge, a Triple-Door Cupboard, Sea faced balcony, locker, ")
+    print("complementary soft drinks, Balcony with an Accent table with 2 Chair and an")
+    print("attached washroom with bath tub + Split AC.\n\n")
+
+    n=int(input("----Press 0 for Main Menu----\n ===>"))
+    if n == 0:
+        Home()
+    else:
+        exit()
+
+#Restaurant Function
+def Restaurant():
+    c=int(input("Customer id:" ))
+    global i
+    f=0
+    r=0
+    for n in range(0,i):
+        if cid[n]==c and s[n]==0:
+            f=1
+            print("""           -------------------------------------------------------------------
+                                                    HOTEL RIVER VIEW
+                               --------------------------------------------------------------------
+                                                        Menu Card                           
+                               --------------------------------------------------------------------
+                               BEVARAGES
+                               ------------------------------
+                               1  Regular Tea................ 20.00
+                               2  Masala Tea................. 40.00
+                               3  Coffee..................... 40.00
+                               4  Cold Drink................. 50.00
+                               5  Mojito..................... 50.00
+                               6  Mango Juice................ 50.00
+                               7  Orange Juice............... 50.00
+
+                               SOUPS
+                               ------------------------------
+                               8  Tomato Soup............... 110.00
+                               9  Hot & Sour................ 110.00
+                               10 Sweet Corn................ 110.00
+                               11 Veg. Manchow.............. 110.00
+    
+                               MAIN COURSE
+                               ------------------------------
+                               12 Veg. Chilly............... 130.00
+                               13 Veg. Manchurian........... 130.00
+                               14 Paneer Chilly............. 150.00
+                               15 Panner Tikka Masala....... 229.00
+                               16 Panner Butter Masala...... 229.00
+                               17 Panner Toofani............ 229.00
+                               18 Panner Angara ............ 229.00
+                               19 Panner Lucknowi........... 229.00
+                               20 Panner Handi.............. 229.00
+                               21 Panner Bhurji............. 229.00
+                               22 Panner Lasoni............. 229.00
+                               23 Panner Rajwadi............ 229.00
+                               24 Panner Kadai.............. 229.00
+                               25 Palak Paneer.............. 259.00
+                               26 Cheese Butter Masala...... 259.00
+                               27 Cheese Kaju Masala........ 259.00
+                               28 Kaju Kofta................ 259.00
+                               29 Malai Kofta............... 259.00
+                               30 Alpine Special............ 259.00
+                               31 Tawa Sabaji............... 259.00
+                               32 Balti Sabji............... 259.00
+                               33 Kolhapuri Sabji........... 259.00
+                               34 Makkhanwala Sabji......... 259.00
+                               35 Dum Aloo.................. 219.00
+                               36 Lasooni Sabji............. 219.00
+                               37 Mix Sabji................. 219.00
+                               38 Pahadi Sabji.............. 219.00
+                               39 Plain Palak............... 219.00
+                               40 Methi Mutter Malai........ 219.00
+                               41 Lazeez Sabaji............. 219.00
+                               42 Jaipuri Sabji............. 219.00
+        
+                                   INDIAN BREAD
+                               ------------------------------
+                               43 Roti Plain................. 30.00
+                               44 Roti Butter................ 35.00
+                               45 Naan Plain................. 45.00
+                               46 Naan Butter................ 50.00
+                               47 Stuffed Paratha............ 89.00
+                               48 Pudina Paratha............. 89.00
+                               49 Kulcha..................... 50.00
+                               50 Onion Kulcha............... 59.00
+                               51 Garlic Kulcha.............. 89.00
+                               52 Missi Roti................. 59.00
+                               53 Chapatti................... 20.00
+                                
+                               DAL
+                               ------------------------------
+                               54 Dal Fried................. 139.00
+                               55 Dal Fried Butter.......... 149.00
+                               56 Dal Makhni................ 169.00
+    
+                               RICE
+                               ------------------------------
+                               57 Steam Rice................ 139.00
+                               58 Jeera Rice................ 149.00
+                               59 Veg. Pulao................ 169.00
+                               60 Cheese Pulao.............. 179.00
+                               62 Veg. Biryani.............. 199.00
+                               63 Veg.Hydrabadi Biryani..... 199.00
+                               64 Kashmiri Pulao............ 169.00
+    
+                               CHINESE
+                               ------------------------------
+                               65 Veg. Manchurian Dry/Gravy. 219.00
+                               66 Veg. Spring Roll.......... 219.00
+                               67 Veg. Crispy............... 219.00
+                               68 Paneer Kurkure............ 219.00
+    
+                               SANDWICH & PIZZA
+                               ------------------------------
+                               69 Bread Butter / Jam......... 69.00
+                               70 Veg. Sandwich............. 129.00
+                               71 Veg. Pizza................ 159.00
+                               72 Aloo Mutter Sandwich...... 139.00
+                               73 French Fries.............. 119.00
+                               74 Cheese Sandwich........... 139.00
+                               75 Margherita Pizza.......... 159.00
+                               76 Roasted Pappad............. 30.00
+                               78 Fried Pappad............... 35.00
+                               79 Masala Pappad.............. 50.00
+    
+                               DESERT
+                               ------------------------------
+                               80 Vanilla...................  79.00
+                               81 Pineapple.................  79.00
+                               82 Chocolate.................  89.00
+                               83 Strawberry................  89.00
+                               84 Butter Scotch............. 100.00
+                               85 Almond Carnival........... 109.00
+                               86 Cookie Cream.............. 109.00
+                               87 American Nuts............. 109.00
+                               88 Vanilla with Brownie...... 109.00
+                               Press 0 to end""")
+            ch=1
+            while(ch!=0):
+                ch=int(input("===>"))
+                if ch==1 or ch==53:
+                    rs=20
+                    r=r+rs
+                elif ch==44 or ch==78:
+                    rs=35
+                    r=r+rs
+                elif ch==43 or ch==76:
+                    rs=30
+                    r=r+rs
+                elif ch==2 or ch==3:
+                    rs=40
+                    r=r+rs
+                elif ch==45:
+                    rs=45
+                    r=r+rs
+                elif ch==4 or ch==5 or ch==6 or ch==7 or ch==46 or ch==49 or ch==79:
+                    rs=50
+                    r=r+rs
+                elif ch==50 or ch==52:
+                    rs=59
+                    r=r+rs
+                elif ch==69:
+                    rs=69
+                    r=r+rs
+                elif ch<=10 and ch>=9:
+                    rs=70
+                    r=r+rs
+                elif ch==80 or ch==81:
+                    rs=79
+                    r=r+rs
+                elif ch==55 or ch==58:
+                    rs=149
+                    r=r+rs
+                elif ch==71 or ch==75:
+                    rs=159
+                    r=r+rs
+                elif ch==60:
+                    rs=179
+                    r=r+rs
+                elif ch==62 or ch==63:
+                    rs=199
+                    r=r+rs
+                elif ch==70:
+                    rs=129
+                    r=r+rs
+                elif ch==39 or ch==73:
+                    rs=119
+                    r=r+rs
+                elif (ch<=11 and ch>=8):
+                    rs=110
+                    r=r+rs
+                elif ch<=19 and ch>=18:
+                    rs=120
+                    r=r+rs
+                elif (ch<=26 and ch>=20) or ch==42:
+                    rs=140
+                    r=r+rs
+                elif ch==14:
+                    rs=150
+                    r=r+rs
+                elif ch<=24 and ch>=15:
+                    rs=229
+                    r=r+rs
+                elif ch==76:
+                    rs=29
+                    r=r+rs
+                elif ch==56 or ch==59 or ch==64:
+                    rs=169
+                    r=r+rs
+                elif ch==54 or ch==57 or ch==72 or ch==74:
+                    rs=139
+                    r=r+rs
+                elif ch<=34 and ch>=25:
+                    rs=259
+                    r=r+rs
+                elif ch<=42 and ch>=35 and ch>=65 and ch<=68:
+                    rs=219
+                    r=r+rs
+                elif ch==47 or ch==48 or ch==51 or ch==82 or ch==83:
+                    rs=89
+                    r=r+rs
+                elif ch==84:
+                    rs=100
+                    r=r+rs
+                elif ch==12 or ch==13:
+                    rs=130
+                    r=r+rs
+                elif ch<=88 and ch>=85:
+                    rs=109
+                    r=r+rs
+                elif ch==0:
+                    pass
+                else:
+                    print("Wrong Choice..!!")
+            print("Total: ", r)
+
+            r=r+rc.pop(n)
+            rc.append(r)
+        else:
+            pass
+    if f == 0:
+        print("Invalid Customer ID")
+    n=int(input("0-Back\n ===>"))
+    if n==0:
+        Home()
+    else:
+        exit()
+
+
+
+			
+
+    		
+    
+
+        
+# Driver Code
+Home()
